@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Temperature Converter</title>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f4f6f8;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .converter {
+        background: #fff;
+        padding: 20px;
+        width: 300px;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      input[type="number"] {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 10px;
+      }
+
+      button {
+        width: 100%;
+        padding: 8px;
+        margin-top: 10px;
+        cursor: pointer;
+      }
+
+      p {
+        font-weight: bold;
+        text-align: center;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="converter">
+      <h3>Temperature Converter</h3>
+
+      <input type="number" id="tempInput" placeholder="Enter temperature" />
+
+      <label>
+        <input type="radio" name="conversion" id="cToF" checked />
+        Celsius → Fahrenheit </label
+      ><br />
+
+      <label>
+        <input type="radio" name="conversion" id="fToC" />
+        Fahrenheit → Celsius
+      </label>
+
+      <button id="convertBtn">Convert</button>
+
+      <p id="result"></p>
+    </div>
+
+    <script>
+      document
+        .getElementById("convertBtn")
+        .addEventListener("click", function () {
+          const tempValue = document.getElementById("tempInput").value;
+          const cToF = document.getElementById("cToF").checked;
+          const fToC = document.getElementById("fToC").checked;
+
+          // Validate input
+          if (tempValue === "" || isNaN(tempValue)) {
+            alert("Please enter a valid number");
+            return;
+          }
+
+          const temp = Number(tempValue);
+          let resultText = "";
+
+          if (cToF) {
+            const fahrenheit = (temp * 9) / 5 + 32;
+            resultText = `${temp} °C = ${fahrenheit.toFixed(2)} °F`;
+          } else if (fToC) {
+            const celsius = ((temp - 32) * 5) / 9;
+            resultText = `${temp} °F = ${celsius.toFixed(2)} °C`;
+          }
+
+          document.getElementById("result").textContent = resultText;
+        });
+    </script>
+  </body>
+</html>
