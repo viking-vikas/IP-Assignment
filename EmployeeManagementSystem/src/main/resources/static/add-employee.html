@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Employee</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+if (localStorage.getItem("loggedIn") !== "true") {
+    window.location.href = "login.html";
+}
+</script>
+    
+</head>
+<body>
+
+<div class="layout">
+    <aside class="sidebar">
+        <h1 class="logo">HRMS</h1>
+        <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="employees.html">Employees</a></li>
+            <li class="active"><a href="add-employee.html">Add Employee</a></li>
+        </ul>
+    </aside>
+
+    <main class="main">
+        <div class="topbar"><h2>Add Employee</h2></div>
+
+        <div class="card">
+            <input type="hidden" id="empId">
+            <div class="form-row">
+                <input id="name" placeholder="Name">
+                <input id="email" placeholder="Email">
+                <input id="salary" placeholder="Salary">
+                <button onclick="addEmployee()">Save</button>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
